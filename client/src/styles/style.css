@@ -1,0 +1,1313 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Heebo", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.link-style {
+  text-decoration: none;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+}
+
+.admin {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid black;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.admin .adminName {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+.admin p {
+  font-size: 2rem;
+  margin: 0;
+}
+.admin button {
+  width: 15vw;
+  background-color: #ddd;
+  padding: 0.5rem;
+}
+.admin button:hover {
+  background-color: rgb(232, 84, 84);
+}
+
+.showCart-Container {
+  transition: all 1s ease-in;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+}
+.showCart-Container .cartList {
+  width: 400px;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  background-color: white;
+  overflow-y: auto;
+}
+.showCart-Container .cartList p {
+  padding: 1rem;
+  border-bottom: 1px solid #a8a7a7;
+  font-weight: 600;
+}
+.showCart-Container .cartList .cartItem {
+  height: 30vh;
+}
+.showCart-Container .cartList .cartItem .item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #a8a7a7;
+  flex-wrap: wrap;
+  position: relative;
+}
+.showCart-Container .cartList .cartItem .item img {
+  width: 100px;
+  height: auto;
+}
+.showCart-Container .cartList .cartItem .item .itemName {
+  flex: 1 1 275px;
+  margin-left: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.showCart-Container .cartList .cartItem .item .itemQuantity {
+  position: absolute;
+  left: 28%;
+  bottom: 0.5rem;
+}
+.showCart-Container .cartList .cartItem .item .itemPrice {
+  position: absolute;
+  left: 35%;
+  bottom: 0.5rem;
+}
+.showCart-Container .cartList .cartItem .item button {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  border: none;
+  background-color: white;
+}
+.showCart-Container .cartList .cartItem .item button svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.showCart-Container .cartList .cartItem .checkOut {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.showCart-Container .cartList .cartItem .checkOut button {
+  border: 1px solid #ff7b1a;
+  background-color: #ff7b1a;
+  color: white;
+  width: 100vw;
+  height: 3rem;
+  font-size: 1.25rem;
+}
+.showCart-Container .shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+}
+nav .nav-left {
+  display: flex;
+  align-items: center;
+}
+nav .nav-left .leftitem {
+  margin: 0rem 1rem;
+  font-size: 0.75rem;
+}
+nav .navLeft-Mobile {
+  display: none;
+}
+nav .logo {
+  width: 200px;
+  height: 140px;
+}
+nav .nav-right {
+  display: flex;
+  align-items: center;
+}
+nav .nav-right .rightitem {
+  margin: 0rem 1rem;
+  font-size: 1.25rem;
+}
+
+.cartItem {
+  position: relative;
+}
+.cartItem .cart-item-count {
+  background-color: #ff7b1a;
+  color: white;
+  position: absolute;
+  top: -10px;
+  right: -17px;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+}
+
+.dot-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots {
+  margin-bottom: 1.5rem;
+}
+.dots .dot {
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #000;
+}
+
+.nav-bar {
+  cursor: pointer;
+}
+.nav-bar ul {
+  display: flex;
+  justify-content: center;
+}
+.nav-bar ul li {
+  margin: 0rem 1.25rem;
+}
+
+.navList-Container {
+  position: fixed;
+  top: 9.5vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+.navList-Container .navList {
+  width: 85vw;
+  height: 100vh;
+  position: relative;
+  background-color: white;
+}
+.navList-Container .navList .list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.navList-Container .navList .list li {
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  display: flex;
+}
+.navList-Container .navList .list li:hover {
+  background-color: #f0ebeb;
+}
+.navList-Container .navList .list li span {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border-top: 8px solid black;
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+  margin: 0 0 0 4px;
+  cursor: pointer;
+}
+.navList-Container .navList .list li ul {
+  cursor: pointer;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+.navList-Container .navList .list li ul li {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+}
+.navList-Container .navList .list li ul li:hover {
+  background-color: #ddd;
+}
+.navList-Container .shadow {
+  position: fixed;
+  top: 9.5vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.caret {
+  position: absolute;
+  top: 8px;
+  border-top: 8px solid black;
+  border-left: 3px solid white;
+  border-right: 3px solid white;
+  margin: 0 0 0 4px;
+}
+
+.drop-down-menu {
+  cursor: pointer;
+  position: relative;
+}
+.drop-down-menu:hover .contents {
+  display: block;
+}
+.drop-down-menu .contents {
+  z-index: 1000;
+  display: none;
+  position: absolute;
+  border: 1px solid black;
+  width: 10rem;
+  padding: 0;
+  background-color: white;
+}
+.drop-down-menu .contents li {
+  font-size: 0.8rem;
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 0.5px solid black;
+  transition: color 0.15s linear 0.15s;
+}
+.drop-down-menu .contents li:hover {
+  color: rgb(120, 119, 119);
+}
+
+.product-detail {
+  display: flex;
+  justify-content: center;
+}
+
+.page-bar {
+  margin-top: 1rem;
+  margin-left: 7rem;
+}
+.page-bar .pages {
+  display: flex;
+}
+.page-bar .pages li {
+  font-size: 0.75rem;
+  color: #a8a7a7;
+  cursor: pointer;
+}
+
+.quickShop-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+.quickShop-container .quickShop {
+  z-index: 100001;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  height: 70vh;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+.quickShop-container .shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.cartAddItem-Mobile {
+  display: none;
+}
+
+.productImg {
+  position: relative;
+}
+.productImg .sold-out {
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+.productImg .sold-out .sold-out-img {
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background-size: 100% 100%;
+  background-color: rgb(0, 0, 0);
+}
+.productImg div.cartAddItem {
+  cursor: pointer;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  border-radius: 50%;
+  background-color: white;
+  z-index: 1000;
+  width: 3rem;
+  height: 3rem;
+}
+.productImg div.cartAddItem:hover {
+  background-color: rgb(232, 232, 232);
+}
+.productImg div.cartAddItem svg {
+  margin-top: 1rem;
+}
+.productImg .normal-img {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0.5rem;
+}
+.productImg .soldout-item-content {
+  width: 35%;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: white;
+}
+.productImg .soldout-item-content div {
+  font-size: 1.25rem;
+  color: #a8a7a7;
+}
+
+.quickShop {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.quickShop .imgShow {
+  display: flex;
+  flex: 1 1 200px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.quickShop .imgShow .mainImg img {
+  width: 300px;
+  height: auto;
+}
+.quickShop .imgShow .allImg {
+  margin-top: 1rem;
+  display: flex;
+  overflow: scroll;
+}
+.quickShop .imgShow .allImg img {
+  margin-left: 0.5rem;
+  width: 60px;
+  height: auto;
+}
+.quickShop .rightItem {
+  display: flex;
+  flex: 1 1 150px;
+  flex-wrap: wrap;
+}
+.quickShop .rightItem .items {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+.quickShop .rightItem .items p {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+.quickShop .rightItem .items .quantity {
+  font-weight: 500;
+}
+.quickShop .rightItem .items input {
+  width: 90%;
+  height: 2rem;
+  padding: 0.5rem 0.25rem;
+}
+.quickShop .rightItem .items .quantitySet {
+  height: 15vh;
+}
+.quickShop .rightItem .items .control {
+  display: flex;
+  width: 90%;
+  margin-top: 2rem;
+  border: 1px solid #ff7b1a;
+  background-color: #ff7b1a;
+  justify-content: space-around;
+}
+.quickShop .rightItem .items .control .increment {
+  border-right: 1px solid black;
+}
+.quickShop .rightItem .items .control div {
+  width: 100%;
+  text-align: center;
+}
+.quickShop .rightItem .items .quickShopSubmit {
+  display: flex;
+  justify-content: center;
+}
+.quickShop .rightItem .items .quickShopSubmit button {
+  width: 10vw;
+  margin-right: 1rem;
+  margin-top: 2rem;
+  border: 1px solid #ff7b1a;
+  background-color: #ff7b1a;
+  color: white;
+  padding: 1rem 0.25rem;
+  height: 4rem;
+}
+.quickShop .rightItem .items .quickShopSubmit button:hover {
+  background-color: #3493fb;
+}
+.quickShop .close {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  border: 1px solid #a8a7a7;
+  padding: 0.25rem 0.5rem;
+}
+
+.login-Container {
+  height: 70vh;
+  display: flex;
+}
+.login-Container .container {
+  margin-top: 5rem;
+  padding: 0;
+  height: 80%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+}
+.login-Container .container .controller {
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+.login-Container .container .controller button {
+  width: 100%;
+  border: none;
+  color: #ff7b1a;
+  padding: 1rem;
+}
+.login-Container .container p {
+  display: flex;
+  justify-content: center;
+  color: #ff7b1a;
+  margin: 1rem 0rem;
+}
+.login-Container .container .loginInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-Container .container .loginInput .alert-error {
+  background-color: rgb(227, 150, 150);
+  width: 80%;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 0.25rem;
+  color: black;
+  height: 5vh;
+  font-size: 1.25rem;
+  overflow-wrap: break-word;
+}
+.login-Container .container .loginInput input {
+  width: 80%;
+  height: 2rem;
+  padding: 1.5rem;
+  margin: 1rem;
+}
+.login-Container .container .registerInput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-Container .container .registerInput .alert-error {
+  background-color: rgb(227, 150, 150);
+  width: 80%;
+  border-radius: 1rem;
+  text-align: center;
+  padding: 0.25rem;
+  color: black;
+  height: 5vh;
+  font-size: 1.25rem;
+  overflow-wrap: break-word;
+}
+.login-Container .container .registerInput input {
+  width: 80%;
+  height: 2rem;
+  padding: 1.5rem;
+  margin: 1rem;
+}
+.login-Container .container .hint {
+  font-size: 0.5rem;
+  margin-left: 5rem;
+  margin-bottom: 1rem;
+}
+.login-Container .container .submit {
+  display: flex;
+  justify-content: center;
+}
+.login-Container .container .submit button {
+  width: 80%;
+  height: 2.5rem;
+  border: none;
+  background-color: #ff7b1a;
+  color: white;
+  padding: 0.5rem 0rem;
+  font-size: 1rem;
+}
+.login-Container .container .submit button:hover {
+  background-color: #3493fb;
+}
+
+.profile-nav {
+  display: flex;
+  justify-content: center;
+}
+.profile-nav ul {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0;
+}
+.profile-nav ul li {
+  border: 1px solid #ff7b1a;
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+.profile-nav ul li a {
+  text-align: center;
+  color: #ff7b1a;
+  font-size: 1.25rem;
+}
+
+.profileContainer {
+  display: flex;
+  margin-bottom: 1rem;
+  height: 100vh;
+}
+.profileContainer .container {
+  display: flex;
+  border: 1px solid #a8a7a7;
+  flex-direction: column;
+  padding: 0;
+  width: 60%;
+}
+.profileContainer .container .profile-navbar {
+  display: flex;
+  justify-content: space-around;
+}
+.profileContainer .container .profile-navbar button {
+  width: 100%;
+  border: none;
+  font-size: 1.25rem;
+  padding: 0.5rem 0rem;
+}
+.profileContainer .editProfile {
+  display: flex;
+  flex-direction: column;
+}
+.profileContainer .editProfile p {
+  margin: 1rem;
+  font-size: 1rem;
+  color: #5b5b5b;
+  font-weight: 600;
+  height: 1.5rem;
+  width: 100vw;
+}
+.profileContainer .editProfile div {
+  display: flex;
+  margin: 1rem 0rem;
+}
+.profileContainer .editProfile div p {
+  margin: 1rem;
+  font-size: 1rem;
+  width: 20%;
+}
+.profileContainer .editProfile a {
+  margin-top: 1rem;
+  text-decoration: none;
+  width: 60%;
+  text-align: center;
+}
+.profileContainer .editProfile input {
+  width: 60%;
+}
+.profileContainer .editProfile .profileSubmit {
+  display: flex;
+  justify-content: end;
+  margin-top: 2rem;
+  margin-right: 2rem;
+}
+.profileContainer .editProfile .profileSubmit button {
+  font-size: 1.25rem;
+  border: 1px solid #ff7b1a;
+  color: white;
+  background-color: #ff7b1a;
+  padding: 0.5rem;
+}
+
+.detailPage {
+  display: flex;
+  flex-wrap: wrap;
+}
+.detailPage .imgShow {
+  flex: 1 1 600px;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.detailPage .imgShow .mainImg img {
+  width: 550px;
+  height: auto;
+}
+.detailPage .imgShow .allImg {
+  cursor: pointer;
+  display: flex;
+  padding: 0;
+  width: 40vw;
+  overflow: scroll;
+}
+.detailPage .imgShow .allImg .imgItem {
+  margin: 1rem 0.25rem 0rem 0.25rem;
+}
+.detailPage .imgShow .allImg .imgItem img {
+  width: 100px;
+  height: auto;
+}
+.detailPage .rightItem {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 600px;
+  width: 50%;
+  flex-direction: column;
+  align-items: center;
+}
+.detailPage .rightItem .detailName {
+  margin-top: 5rem;
+  font-size: 1.5rem;
+}
+.detailPage .rightItem .detailPrice {
+  font-size: 1.25rem;
+  margin: 1rem 0rem;
+}
+.detailPage .rightItem .solded {
+  color: rgb(232, 84, 84);
+  background-color: #ddd;
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 80%;
+  text-align: center;
+}
+.detailPage .rightItem .quantitySet {
+  width: 100%;
+  display: flex;
+}
+.detailPage .rightItem .quantitySet label {
+  margin-right: 0.5rem;
+  margin-top: 0.5rem;
+}
+.detailPage .rightItem .quantitySet input {
+  width: 60%;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  text-align: center;
+}
+.detailPage .rightItem .quantitySet .control {
+  background-color: #ff7b1a;
+  border: #ff7b1a;
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  height: 2.5rem;
+  margin: 0;
+  margin-left: 1rem;
+  padding: 0.7rem 0rem;
+}
+.detailPage .rightItem .quantitySet .control div {
+  display: flex;
+  margin: 0rem 0.2rem;
+  font-size: 1rem;
+  width: 100%;
+  border: none;
+  justify-content: center;
+}
+.detailPage .rightItem .detailSubmit {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.detailPage .rightItem .detailSubmit button {
+  width: 80%;
+  margin: 1rem;
+  border: #ff7b1a;
+  background-color: #ff7b1a;
+  color: white;
+  height: 3rem;
+}
+
+.editContainer {
+  height: 60vh;
+  background-color: #f8f8f8;
+  display: flex;
+}
+.editContainer .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.editContainer .container .editPassWord {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 35vh;
+  width: 50vw;
+}
+.editContainer .container .editPassWord p {
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+.editContainer .container .editPassWord div {
+  display: flex;
+  width: 50vw;
+  justify-content: center;
+}
+.editContainer .container .editPassWord div span {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+.editContainer .container .editPassWord div input {
+  display: flex;
+  border: none;
+  color: #333;
+  padding: 0.75rem 0rem;
+  border-bottom: 1px dotted black;
+  background: transparent;
+  width: 80%;
+}
+.editContainer .container .editPassWord button {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  background-color: #ff7b1a;
+  color: white;
+  width: 40vw;
+  border-color: #ff7b1a;
+  padding: 0.5rem;
+}
+
+.productSelf {
+  display: flex;
+}
+.productSelf .ImgAll {
+  margin-top: 3rem;
+  height: 50vh;
+  width: 70vw;
+  overflow: scroll;
+  align-items: center;
+  display: flex;
+}
+.productSelf .ImgAll img {
+  margin-right: 0.5rem;
+  width: 240px;
+  height: auto;
+}
+.productSelf .rightItem {
+  margin-top: 3rem;
+}
+.productSelf .rightItem p {
+  font-size: 1.5rem;
+}
+.productSelf .rightItem button {
+  width: 10vw;
+  background-color: #ff7b1a;
+  border-color: #ff7b1a;
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  color: white;
+  margin-left: 1.5rem;
+}
+
+.editProduct-Container {
+  background-color: #f8f8f8;
+  height: 80vh;
+}
+.editProduct-Container .items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.editProduct-Container .items .item {
+  margin: 1rem 0rem;
+  display: flex;
+  align-items: center;
+  width: 90vw;
+  height: 7vh;
+}
+.editProduct-Container .items .item label {
+  margin-right: 3rem;
+  width: 15vw;
+}
+.editProduct-Container .items .item input {
+  width: 90%;
+  height: 2rem;
+  padding: 1rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px dotted black;
+  color: #333;
+}
+.editProduct-Container .items .item input[type=file] {
+  padding: 0;
+}
+.editProduct-Container .items .item select {
+  width: 60%;
+  margin-bottom: 1rem;
+  background-color: #f8f8f8;
+}
+.editProduct-Container .items .item label {
+  width: 10vw;
+}
+.editProduct-Container .items button {
+  background-color: #ff7b1a;
+  color: white;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 20vw;
+  height: 8vh;
+  border-color: #ff7b1a;
+}
+
+.postProduct-Container {
+  background-color: #f8f8f8;
+  height: 90vh;
+  display: flex;
+}
+.postProduct-Container .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.postProduct-Container .container .alert-error {
+  color: red;
+  font-weight: 700;
+}
+.postProduct-Container .container form {
+  display: flex;
+  flex-direction: column;
+}
+.postProduct-Container .container form p {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bolder;
+  margin-top: 1.5rem;
+}
+.postProduct-Container .container form select, .postProduct-Container .container form input {
+  margin: 0.5rem 0rem;
+}
+.postProduct-Container .container form button {
+  background-color: #ff7b1a;
+  color: white;
+  border-color: #ff7b1a;
+  padding: 0.5rem;
+}
+
+@media screen and (max-width: 605px) {
+  .rightItem .control {
+    margin-top: 1rem;
+    margin-left: 5rem;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.cart-Container {
+  display: flex;
+  margin-top: 3rem;
+  flex-direction: column;
+}
+.cart-Container .container {
+  padding: 0;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.cart-Container .container .cartTitle {
+  border-bottom: 1px solid #a8a7a7;
+  background-color: #F6F6F6;
+}
+.cart-Container .container .cartTitle p {
+  font-size: 1.25rem;
+  padding: 0.25rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.cart-Container .container .cartBar {
+  border-bottom: 1px solid #a8a7a7;
+}
+.cart-Container .container .cartBar ul {
+  display: flex;
+  margin-top: 1rem;
+}
+.cart-Container .container .cartBar ul li {
+  display: flex;
+  flex: 1 1 100px;
+  padding: 0;
+}
+.cart-Container .container .cartBar ul .li1 {
+  flex: 2.5 1 150px;
+}
+.cart-Container .container .cartItem {
+  display: flex;
+  flex-direction: column;
+}
+.cart-Container .container .cartItem .item {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #a8a7a7;
+}
+.cart-Container .container .cartItem .item img {
+  width: 100px;
+  height: auto;
+}
+.cart-Container .container .cartItem .item .itemName {
+  display: flex;
+  align-items: center;
+  flex: 4 1 100px;
+  padding: 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.cart-Container .container .cartItem .item .itemPrice {
+  display: flex;
+  flex: 1 1 75px;
+  align-items: center;
+  margin-left: 1rem;
+}
+.cart-Container .container .cartItem .item .itemQuantity {
+  display: flex;
+  align-items: center;
+  flex: 1 1 150px;
+}
+.cart-Container .container .cartItem .item .itemQuantity input {
+  display: flex;
+  flex: 1 1 50px;
+  height: 2.5rem;
+  text-align: center;
+  border: none;
+  width: 5vw;
+}
+.cart-Container .container .cartItem .item .itemQuantity .itemDecrease {
+  border: 1px solid black;
+  padding: 0.25rem;
+}
+.cart-Container .container .cartItem .item .itemQuantity .itemIncrease {
+  border: 1px solid black;
+  padding: 0.25rem;
+}
+.cart-Container .container .cartItem .item .itemSubtotal {
+  display: flex;
+  flex: 1 1 100px;
+  align-items: center;
+  margin-right: 1rem;
+  justify-content: flex-end;
+}
+.cart-Container .container .cartItem .item .itemDelete {
+  border: none;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 1rem;
+  flex: 1 1 50px;
+}
+.cart-Container .summaryContainer {
+  margin-top: 3rem;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  border: 1px solid black;
+}
+.cart-Container .summaryContainer .cartTitle {
+  border-bottom: 1px solid #a8a7a7;
+  background-color: #F6F6F6;
+  width: 100%;
+}
+.cart-Container .summaryContainer .cartTitle p {
+  font-size: 1.25rem;
+  padding: 0.25rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.cart-Container .summaryContainer button {
+  background-color: #ff7b1a;
+  border-color: #ff7b1a;
+  color: white;
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+.cart-Container .summaryContainer .subtotal {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cart-Container .summaryContainer .subtotal p {
+  font-size: 1.25rem;
+  margin: 1rem;
+}
+
+.pageControl {
+  display: flex;
+  justify-content: center;
+}
+.pageControl div {
+  margin: 1rem;
+  cursor: pointer;
+}
+.pageControl .pages ul .active {
+  color: #ff7b1a;
+}
+.pageControl .pages ul li {
+  margin: 0rem 0.5rem;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 785px) {
+  .cartBar {
+    display: none;
+  }
+  .itemDelete {
+    position: absolute;
+    left: 95%;
+    top: 10px;
+  }
+}
+@media screen and (max-width: 774px) {
+  .quickShop-container .quickShop {
+    height: 80vh;
+    width: 90vw;
+    flex-direction: column;
+  }
+  .quickShop-container .imgShow .allImg {
+    display: none;
+  }
+  .quickShop-container .rightItem {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+  .quickShop-container .rightItem .items {
+    margin: 0rem;
+  }
+  .quickShop-container .rightItem .items .quantitySet .control {
+    margin: 1rem 5rem 1rem 0rem;
+  }
+  .quickShop-container .rightItem .items .quickShopSubmit button {
+    display: flex;
+    margin-top: 0rem;
+    width: 20vw;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.footer-Container {
+  width: 100%;
+  height: 40vh;
+  background-color: #f8f8f8;
+  border-top: 1px solid #000000;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+.footer-Container .footer {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 100%;
+}
+.footer-Container .footer .line1 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+  margin: 3rem 0rem;
+}
+.footer-Container .footer .line1 li a {
+  text-decoration: none;
+  color: black;
+}
+.footer-Container .footer .line2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+.footer-Container .footer .line2 li {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0rem;
+}
+.footer-Container .footer .line2 li img {
+  width: 120px;
+  height: 80px;
+}
+.footer-Container .footer .line2 li p {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 991px) {
+  .cartAddItem {
+    display: none;
+  }
+  .cartAddItem-Mobile {
+    cursor: pointer;
+    display: block;
+    border-color: #dddddd;
+    background-color: #dddddd;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .cartAddItem-Mobile svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  .detailPage .imgShow .allImg {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 584px) {
+  .nav-bar {
+    display: none;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100000;
+    width: 100%;
+    height: 5rem;
+    background-color: white;
+    border-bottom: 1px solid #000000;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  nav .logo {
+    height: 75px;
+    width: 140px;
+  }
+  nav .nav-left {
+    display: none;
+  }
+  nav .navLeft-Mobile {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    padding: 0;
+  }
+  nav .navLeft-Mobile .leftItem {
+    margin-right: 1rem;
+  }
+  nav .navLeft-Mobile .leftItem .showInput-Container {
+    position: fixed;
+    top: 9vh;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  nav .navLeft-Mobile .leftItem .showInput-Container .shadow {
+    background-color: #000;
+    opacity: 0.5;
+    position: fixed;
+    top: 9vh;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  nav .navLeft-Mobile .leftItem .showInput-Container .fixedInput {
+    width: 100%;
+    z-index: 1000000;
+    height: 3.5rem;
+    position: fixed;
+    top: 9vh;
+    left: 0;
+    background-color: white;
+  }
+  nav .navLeft-Mobile .leftItem .showInput-Container .fixedInput .showInput {
+    position: relative;
+    left: 1rem;
+    width: 90%;
+  }
+  nav .nav-right {
+    margin-top: 1rem;
+    margin-right: 1rem;
+  }
+  nav .nav-right .rightitem {
+    margin: 0;
+    margin-right: 0.5rem;
+  }
+  nav .nav-right .search {
+    display: none;
+  }
+}/*# sourceMappingURL=style.css.map */
