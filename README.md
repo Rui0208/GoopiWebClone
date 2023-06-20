@@ -2,13 +2,13 @@
 
 # Project 介紹
 
-此專案是以 Clone Goopi 網站作為基礎，實現電商網站基礎功能。
+此專案是以 Clone Goopi 網站作為基礎，平常就有在fb社團或旋轉拍賣會賣二手衣服，以此想法下去實作，實現電商網站基礎功能。
 
 #
 
 # Demo 影片
 
-https://www.youtube.com/watch?v=zcU9tJf35es
+https://www.youtube.com/watch?v=VU70EFXNjqY
 
 #
 
