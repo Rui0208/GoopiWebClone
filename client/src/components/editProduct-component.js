@@ -13,7 +13,6 @@ const EditProduct = () => {
   const [brand, setBrand] = useState(null);
   const [iamges, setImages] = useState(null);
   let [selectedImages, setSelectedImages] = useState(null);
-  // console.log(productData.foundProduct.category);
   useEffect(() => {
     ProductService.getById(_id)
       .then((data) => {

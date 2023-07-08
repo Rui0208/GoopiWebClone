@@ -202,37 +202,42 @@ const ProductALL = ({ productData, setShowCart, showCart }) => {
                 <div className="items">
                   <p>{selectedProduct.name}</p>
                   <p>NT${selectedProduct.price}</p>
-                  <div className="quantitySet">
-                    {" "}
-                    <div className="quantity" htmlFor="quantity">
-                      Quantity{" "}
-                    </div>
-                    <input
-                      type="number"
-                      min={1}
-                      onChange={hadelQuantity}
-                      value={quantity}
-                      readOnly
-                    />
-                    <div className="control">
-                      <div className="increment" onClick={handleIncrement}>
-                        <FontAwesomeIcon
-                          icon={faPlus}
-                          style={{ color: "#000000" }}
-                        />
+                  {selectedProduct.quantity !== 0 ? (
+                    <div className="quantitySet">
+                      {" "}
+                      <label htmlFor="quantity">Quantity </label>
+                      <input
+                        type="number"
+                        min={1}
+                        onChange={hadelQuantity}
+                        value={quantity}
+                        readOnly
+                      />
+                      <div className="control">
+                        <div onClick={handleIncrement}>
+                          <FontAwesomeIcon
+                            icon={faPlus}
+                            style={{ color: "#f8f8f8" }}
+                          />
+                        </div>
+                        <div onClick={handleDecrement}>
+                          <FontAwesomeIcon
+                            icon={faMinus}
+                            style={{ color: "#f8f8f8" }}
+                          />
+                        </div>
                       </div>
-                      <div onClick={handleDecrement}>
-                        <FontAwesomeIcon
-                          icon={faMinus}
-                          style={{ color: "#000000" }}
-                        />
-                      </div>
                     </div>
-                  </div>
-                  <div className="quickShopSubmit">
-                    <button onClick={hadelCartAdd}>ADD TO Cart </button>
-                    <button onClick={hadelCheckOut}>BUY NOW</button>
-                  </div>
+                  ) : (
+                    <div className="solded">Sold Out</div>
+                  )}
+
+                  {selectedProduct.quantity !== 0 && (
+                    <div className="quickShopSubmit">
+                      <button onClick={hadelCartAdd}>ADD TO Cart </button>
+                      <button onClick={hadelCheckOut}>BUY NOW</button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -6,7 +6,6 @@ const Homepage = ({ setShowCart, showCart }) => {
   let [productData, setProductData] = useState(null);
   let [homeItem, setHomeItem] = useState("/images/homeItem1.webp");
   const [currentDot, setCurrentDot] = useState(0);
-  console.log(showCart);
   const navigate = useNavigate();
   const dots = [
     "/images/homeItem1.webp",

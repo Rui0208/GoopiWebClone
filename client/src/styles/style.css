@@ -461,6 +461,12 @@ nav .nav-right .rightitem {
   flex-direction: column;
   margin-top: 5rem;
 }
+.quickShop .rightItem .items .solded {
+  color: red;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  text-align: center;
+}
 .quickShop .rightItem .items p {
   font-weight: 500;
   font-size: 1.25rem;
@@ -1140,7 +1146,7 @@ nav .nav-right .rightitem {
     top: 10px;
   }
 }
-@media screen and (max-width: 774px) {
+@media screen and (max-width: 1050px) {
   .quickShop-container .quickShop {
     height: 80vh;
     width: 90vw;

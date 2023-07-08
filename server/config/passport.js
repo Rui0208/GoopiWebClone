@@ -14,7 +14,7 @@ module.exports = (passport) => {
         let foundUser = await User.findOne({ _id: jwt_payload._id }).exec();
 
         if (foundUser) {
-          return done(null, foundUser); // req.user <= foundUser
+          return done(null, foundUser);
         } else {
           return done(null, false);
         }

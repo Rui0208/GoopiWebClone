@@ -51,7 +51,7 @@ const prodouctValidation = (data) => {
       .valid("TOP", "BOTTOM", "HEADWEAR", "ACCESSORIES")
       .required(),
     brand: Joi.string().required(),
-    imageUrl: Joi.array().items(Joi.string()).min(1).required(), // 修改为验证图片文件名数组
+    imageUrl: Joi.array().items(Joi.string()).min(1).required(),
   });
   return schema.validate(data);
 };

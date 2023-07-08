@@ -55,7 +55,6 @@ router.post("/:productId/purchase", async (req, res) => {
 router.post("/checkout", async (req, res) => {
   try {
     let cart = await Cart.findOne({ user: req.user._id });
-    console.log(cart);
     if (cart.items.length === 0) {
       return res.send("購物車內無商品");
     } else {
@@ -80,7 +79,6 @@ router.post("/checkout", async (req, res) => {
       }
       cart.items = [];
       await cart.save();
-      console.log(cart.items);
       return res.send("購物車總金額:" + total);
     }
   } catch (e) {
@@ -128,7 +126,6 @@ router.delete("/items/:productId", async (req, res) => {
 router.patch("/items/:productId", async (req, res) => {
   const { productId } = req.params;
   const { quantity } = req.body;
-  console.log(productId, quantity);
   const userId = req.user._id;
   try {
     const cart = await Cart.findOne({ user: userId });

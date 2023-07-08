@@ -92,7 +92,6 @@ router.patch("/editPassword/:_id", async (req, res) => {
 
     const hashedNewPassword = await bcrypt.hash(newPassword, 10);
 
-    // 更新用户记录的密码
     user.password = hashedNewPassword;
     await user.save();
 
@@ -151,7 +150,7 @@ router.delete("/delete/:_id", async (req, res) => {
     res.status(500).send(e.message);
   }
 });
-//_id找使用找
+//_id找使用者
 router.get("/user/:_id", async (req, res) => {
   try {
     const { _id } = req.params;

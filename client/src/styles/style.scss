@@ -481,6 +481,10 @@ nav{
             flex-wrap: wrap;
             flex-direction: column;
             margin-top: 5rem;
+            .solded{color: red;
+            font-weight: bolder;
+        font-size: 1.5rem;
+    text-align: center;}
             p{
                 font-weight: 500;
                 font-size: 1.25rem;
@@ -1171,7 +1175,7 @@ nav{
     }
     
 }
-@media screen and (max-width:774px) {
+@media screen and (max-width:1050px) {
     .quickShop-container{
         
        .quickShop{

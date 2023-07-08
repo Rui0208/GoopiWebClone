@@ -91,10 +91,10 @@ const Cart = () => {
       const newQuantity = e.target.value;
       console.log(newQuantity);
 
-      const updatedQuantityData = [...quantityData]; // 创建新的数组副本
-      updatedQuantityData[index] = newQuantity; // 更新数量
+      const updatedQuantityData = [...quantityData];
+      updatedQuantityData[index] = newQuantity;
 
-      setQuantityData(updatedQuantityData); // 更新quantityData数组
+      setQuantityData(updatedQuantityData);
       updateItemPrice(index, newQuantity);
       const updateItem = { quantity: newQuantity };
 

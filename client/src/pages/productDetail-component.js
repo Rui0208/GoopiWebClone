@@ -11,7 +11,6 @@ const ProductDetail = ({ showCart, setShowCart }) => {
   let [quantity, setQuantity] = useState(1);
   let [mainImg, setMainImg] = useState("");
   const { _id } = useParams();
-  console.log(productData);
   useEffect(() => {
     ProductService.getById(_id)
       .then((data) => {

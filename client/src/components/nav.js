@@ -24,7 +24,7 @@ const Nav = ({
   const [cartQuantity, setCartQuantity] = useState(0);
   const [cartItem, setCartItem] = useState(null);
   const [navList, setNavList] = useState(false);
-
+  console.log(cartData);
   const [showInput, setShowInput] = useState(false);
   const [showCategoryList, setShowCategoryList] = useState(false);
   const [showBrandsList, setShowBrandsList] = useState(false);
@@ -34,6 +34,8 @@ const Nav = ({
     CartService.getCart()
       .then((data) => {
         setCartItem(data.data.items);
+        let quantity = cartData.length;
+        setCartQuantity(quantity);
       })
       .catch((e) => {
         console.log(e);
@@ -82,7 +84,7 @@ const Nav = ({
       .catch((e) => {
         console.log(e);
       });
-  }, [cartData]);
+  }, [showCart]);
 
   const handleDelete = (productId) => {
     return () => {
